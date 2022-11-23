@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title></title>
-    <link href="/2022/11/23/LeGO-LOAM/"/>
-    <url>/2022/11/23/LeGO-LOAM/</url>
-    
-    <content type="html"><![CDATA[<h1 id="LeGO-LOAM"><a href="#LeGO-LOAM" class="headerlink" title="LeGO-LOAM"></a>LeGO-LOAM</h1><h1 id="1-算法整体流程"><a href="#1-算法整体流程" class="headerlink" title="1.算法整体流程"></a>1.算法整体流程</h1><p><img src="/assets/3-20221119235641-7e0dy23.png" alt="3">​</p><ol><li><h2 id="分割点云-Segmentation"><a href="#分割点云-Segmentation" class="headerlink" title="分割点云(Segmentation)"></a>分割点云(Segmentation)</h2></li><li><h2 id="特征提取-Feature-Extraction"><a href="#特征提取-Feature-Extraction" class="headerlink" title="特征提取(Feature Extraction)"></a>特征提取(Feature Extraction)</h2></li><li><h2 id="雷达里程记-Lidar-Odometry"><a href="#雷达里程记-Lidar-Odometry" class="headerlink" title="雷达里程记(Lidar Odometry)"></a>雷达里程记(Lidar Odometry)</h2></li><li><h2 id="雷达建图-Lidar-Mapping）"><a href="#雷达建图-Lidar-Mapping）" class="headerlink" title="雷达建图(Lidar Mapping）"></a>雷达建图(Lidar Mapping）</h2></li></ol><h1 id="2-runFeatureAssociation-主体函数"><a href="#2-runFeatureAssociation-主体函数" class="headerlink" title="2.runFeatureAssociation()主体函数"></a>2.runFeatureAssociation()主体函数</h1><ol><li><p>如果有新数据进来则执行，否则不执行任何操作；</p></li><li><p>将点云数据进行坐标变换，进行插补等工作；</p></li><li><p>进行光滑性计算，并保存结果；</p></li><li><p>标记阻塞点(阻塞点：点云中可能出现的互相遮挡的点)；</p></li><li><p>特征抽取，然后分别保存cornerPointsSharp等队列中去；</p></li><li><p>发布cornerPointsSharp等4种类型的点云数据；</p></li><li><p>预测位姿；</p></li><li><p>更新变换；</p></li><li><p>积分总变换；</p></li><li><p>发布里程计信息及上一次点云信息；</p><p> 克隆代码</p></li></ol><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">git clone <span class="hljs-attr">https</span>:<span class="hljs-comment">//github.com/AbangLZU/SC-LeGO-LOAM.git</span><br></code></pre></td></tr></table></figure><p>‍</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Hello World</title>
     <link href="/2022/06/29/hello-world/"/>
     <url>/2022/06/29/hello-world/</url>
