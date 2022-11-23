@@ -16,21 +16,23 @@
   <meta name="author" content="zjy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="LeGO-LOAM1.算法整体流程​  分割点云(Segmentation) 特征提取(Feature Extraction) 雷达里程记(Lidar Odometry) 雷达建图(Lidar Mapping）  2.runFeatureAssociation()主体函数 如果有新数据进来则执行，否则不执行任何操作；  将点云数据进行坐标变换，进行插补等工作；  进行光滑性计算，并保存结果；  标">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://loverhacking.github.io/2022/06/29/hello-world/index.html">
+<meta property="og:title" content="myblog">
+<meta property="og:url" content="https://loverhacking.github.io/2022/11/23/LeGO-LOAM/index.html">
 <meta property="og:site_name" content="myblog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="LeGO-LOAM1.算法整体流程​  分割点云(Segmentation) 特征提取(Feature Extraction) 雷达里程记(Lidar Odometry) 雷达建图(Lidar Mapping）  2.runFeatureAssociation()主体函数 如果有新数据进来则执行，否则不执行任何操作；  将点云数据进行坐标变换，进行插补等工作；  进行光滑性计算，并保存结果；  标">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-06-29T09:25:57.611Z">
-<meta property="article:modified_time" content="2022-06-29T12:54:38.388Z">
+<meta property="og:image" content="https://loverhacking.github.io/assets/3-20221119235641-7e0dy23.png">
+<meta property="article:published_time" content="2022-11-23T04:14:49.967Z">
+<meta property="article:modified_time" content="2022-11-23T04:12:39.000Z">
 <meta property="article:author" content="zjy">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://loverhacking.github.io/assets/3-20221119235641-7e0dy23.png">
   
   
   
-  <title>Hello World - myblog</title>
+  <title>myblog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -206,8 +208,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-29 17:25" pubdate>
-          2022年6月29日 下午
+        <time datetime="2022-11-23 12:14" pubdate>
+          2022年11月23日 中午
         </time>
       </span>
     
@@ -218,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          362 字
         
       </span>
     
@@ -267,24 +269,44 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <h1 id="LeGO-LOAM"><a href="#LeGO-LOAM" class="headerlink" title="LeGO-LOAM"></a>LeGO-LOAM</h1><h1 id="1-算法整体流程"><a href="#1-算法整体流程" class="headerlink" title="1.算法整体流程"></a>1.算法整体流程</h1><p><img src="/assets/3-20221119235641-7e0dy23.png" srcset="/img/loading.gif" lazyload alt="3">​</p>
+<ol>
+<li><h2 id="分割点云-Segmentation"><a href="#分割点云-Segmentation" class="headerlink" title="分割点云(Segmentation)"></a>分割点云(Segmentation)</h2></li>
+<li><h2 id="特征提取-Feature-Extraction"><a href="#特征提取-Feature-Extraction" class="headerlink" title="特征提取(Feature Extraction)"></a>特征提取(Feature Extraction)</h2></li>
+<li><h2 id="雷达里程记-Lidar-Odometry"><a href="#雷达里程记-Lidar-Odometry" class="headerlink" title="雷达里程记(Lidar Odometry)"></a>雷达里程记(Lidar Odometry)</h2></li>
+<li><h2 id="雷达建图-Lidar-Mapping）"><a href="#雷达建图-Lidar-Mapping）" class="headerlink" title="雷达建图(Lidar Mapping）"></a>雷达建图(Lidar Mapping）</h2></li>
+</ol>
+<h1 id="2-runFeatureAssociation-主体函数"><a href="#2-runFeatureAssociation-主体函数" class="headerlink" title="2.runFeatureAssociation()主体函数"></a>2.runFeatureAssociation()主体函数</h1><ol>
+<li><p>如果有新数据进来则执行，否则不执行任何操作；</p>
+</li>
+<li><p>将点云数据进行坐标变换，进行插补等工作；</p>
+</li>
+<li><p>进行光滑性计算，并保存结果；</p>
+</li>
+<li><p>标记阻塞点(阻塞点：点云中可能出现的互相遮挡的点)；</p>
+</li>
+<li><p>特征抽取，然后分别保存cornerPointsSharp等队列中去；</p>
+</li>
+<li><p>发布cornerPointsSharp等4种类型的点云数据；</p>
+</li>
+<li><p>预测位姿；</p>
+</li>
+<li><p>更新变换；</p>
+</li>
+<li><p>积分总变换；</p>
+</li>
+<li><p>发布里程计信息及上一次点云信息；</p>
+<p> 克隆代码</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs js">git clone <span class="hljs-attr">https</span>:<span class="hljs-comment">//github.com/AbangLZU/SC-LeGO-LOAM.git</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>‍</p>
 
                 
               </div>
@@ -302,8 +324,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://loverhacking.github.io/2022/06/29/hello-world/</div>
+      <div></div>
+      <div>https://loverhacking.github.io/2022/11/23/LeGO-LOAM/</div>
     </div>
     <div class="license-meta">
       
@@ -315,7 +337,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年6月29日</div>
+          <div>2022年11月23日</div>
         </div>
       
       
@@ -347,15 +369,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/11/23/LeGO-LOAM/" title="">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile"></span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/06/29/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
