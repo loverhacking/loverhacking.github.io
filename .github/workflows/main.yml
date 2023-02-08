@@ -1,0 +1,24 @@
+name: CI  #workflow的名字，这个自己取名即可
+
+on:
+  push:
+    branches: [ master ] #这里代表在master分支有push的时候，来执行这个workfolw，根据你的需要设置
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 #第一步显示checkout代码
+      - name: Use Node.js #设置环境为NodeJS，下面的Version可以设置Node的版本
+        uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+      - run: npm install #这里就是安装完node之后执行的命令了，和本地生成Hexo博客命令一致。
+      - run: npm install -g hexo-cli
+      - run: hexo generate
+- uses: manyuanrong/setup-ossutil@v1.0 #使用阿里云的ossutil工具
+  with:
+    endpoint: "oss-cn-beijing.aliyuncs.com" #这里是你的bucket的endpoint，根据你选择的区域不同会不一样，在Bucket页面查看即可
+    access-key-id: ${{ secrets.KEY }} #这里填写Key
+    access-key-secret: ${{ secrets.SECRET }} #这里填写Secret
+- run: ossutil cp -rf public oss://qiuyejingmei/ #这个命令就是把生成的public文件夹的内容，传到oss的Bucket中，选择rf的参数直接覆盖文件，把“jayshaoblog”替换为你的bucket名字
